@@ -13,3 +13,21 @@ ruta_csv = "C:\\Users\\wilme\\Pictures\\actividad 3\\transporte_masivo.csv"
 
 # Cargar datos desde un archivo CSV
 datos = pd.read_csv(ruta_csv)
+
+# Preprocesamiento de datos
+# Las características son distancia, tiempo y costo del viaje
+X = datos[['distancia', 'tiempo', 'costo']]  # Características
+
+y = datos['transporte']  # Etiqueta (tipo de transporte masivo)
+
+# Dividir los datos en conjuntos de entrenamiento y prueba
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Crear y entrenar el modelo de regresión logística
+modelo = LogisticRegression()
+modelo.fit(X_train, y_train)
+
+
+# Realizar predicciones en el conjunto de prueba
+y_pred = modelo.predict(X_test)
+
