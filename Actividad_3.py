@@ -49,3 +49,13 @@ plt.colorbar()
 plt.xlabel('Predicciones')
 plt.ylabel('Etiquetas reales')
 plt.show()
+
+tiempo_promedio_por_transporte = datos.groupby('transporte')['tiempo'].mean()
+
+# Mostrar el tiempo promedio de viaje para cada tipo de transporte
+print("\n\nTiempo promedio de viaje por tipo de transporte:")
+print(tiempo_promedio_por_transporte)
+
+# Determinar el tipo de transporte más rápido
+transporte_mas_rapido = tiempo_promedio_por_transporte.idxmin()
+print("\nEl medio de transporte más rápido es:", transporte_mas_rapido)
