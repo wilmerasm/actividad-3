@@ -31,3 +31,21 @@ modelo.fit(X_train, y_train)
 # Realizar predicciones en el conjunto de prueba
 y_pred = modelo.predict(X_test)
 
+# Evaluar el modelo
+print('Matriz de confusión:')
+print(confusion_matrix(y_test, y_pred))
+
+print('\nReporte de clasificación:')
+print(classification_report(y_test, y_pred))
+
+print('\nPrecisión del modelo:', accuracy_score(y_test, y_pred))
+
+# Visualización de resultados (opcional)
+# Graficar la matriz de confusión
+plt.figure()
+plt.imshow(confusion_matrix(y_test, y_pred), cmap='Blues')
+plt.title('Matriz de confusión')
+plt.colorbar()
+plt.xlabel('Predicciones')
+plt.ylabel('Etiquetas reales')
+plt.show()
